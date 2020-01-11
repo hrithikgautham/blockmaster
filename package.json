@@ -1,0 +1,40 @@
+{
+  "name": "blockmaster",
+  "version": "1.0.0",
+  "description": "Simple way to create Blockchains.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node test.js",
+    "start": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "keywords": [
+    "blockchain",
+    "hash",
+    "bitcoin",
+    "ethereum"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hrithikgautham/blockmaster"
+  },
+  "author": "Hrithik Gautham TG",
+  "license": "ISC",
+  "dependencies": {
+    "block-pow": "^2.0.6",
+    "gitmon": "^1.1.5",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  }
+}
