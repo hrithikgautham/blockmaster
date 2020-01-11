@@ -1,15 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-import Header from "./components/Header";
-
-function App() {
-    const [title, setTitle] = useState("My WEbpage");
-    return (
-        <div>
-            <Header title={title}/>
-            Hello World!
-        </div>
-    )
-}
+import App from "./components";
 
 ReactDOM.render(<App/>, document.getElementById('root'));
