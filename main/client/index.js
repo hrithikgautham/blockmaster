@@ -1,4 +1,4 @@
-const transactionFormat = require("../utils/tranFormat");
+const transactionFormat = require("../../utils/tranFormat");
 const path = require('path');
 const fsPromises = require('fs').promises;
 const { getHash } = require('block-pow');
