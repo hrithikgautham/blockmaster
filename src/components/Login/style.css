@@ -1,8 +1,0 @@
-
-form input[type="submit"]:hover {
-    cursor: pointer;
-}
-
-form input[type="text"]:hover {
-    cursor: text;
-}

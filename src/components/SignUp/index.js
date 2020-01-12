@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Input } from "../utils";
-import "./style.css";
+import "./style.scss";
 
 export default function SignUp(props) {
     const [firstName, setFirstName] = useState("");
@@ -78,7 +78,7 @@ export default function SignUp(props) {
             <Input 
             type="text" 
             placeholder="email"
-            style={ {backgroundColor: "cadetblue"} } 
+            style={ {backgroundColor: "cadetblue"} }
             name="email" 
             value={ email } 
             onChange={ handleOnChange }/>

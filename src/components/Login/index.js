@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Input, Form } from "../utils";
-import "./style.css";
+import "./style.scss";
 
 
 export default function Login({ handleLoginSubmit }) {
