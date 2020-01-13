@@ -74,4 +74,10 @@ async function createBlock() {
     }
 }
 
-createBlock();
+async function a(){
+    await createBlock();
+    await createBlock();
+    await createBlock();
+}
+
+a();
