@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node test.js",
     "start": "webpack-dev-server",
-    "build": "webpack"
+    "build": "webpack",
+    "select": "node ./main/blockchain/utils"
   },
   "keywords": [
     "blockchain",
@@ -22,7 +23,6 @@
   "license": "ISC",
   "dependencies": {
     "block-pow": "^2.0.6",
-    "gitmon": "^1.1.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
