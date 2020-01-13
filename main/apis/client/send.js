@@ -2,7 +2,6 @@ const Transaction = require("../classes/Transaction");
 const path = require('path');
 const fsPromises = require('fs').promises;
 const { getHash } = require('block-pow');
-let COUNT = 0;
 
 async function storeTransaction(transaction) {
     // const hash = await getHash(tran);
@@ -14,12 +13,12 @@ async function storeTransaction(transaction) {
                     path.join(
                         __dirname, 
                         "..", 
+                        "..",
                         "mempool", 
                         `${hash}` 
                     ),
                     data
                 );
-        COUNT++;
     }
     catch(err) {
         throw err;

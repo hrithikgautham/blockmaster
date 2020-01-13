@@ -7,7 +7,10 @@ const getMerkleRoot = require("./getMerkleRoot");
 const heapify = require("../../utils/maxHeap");
 const fsPromises = require("fs").promises;
 const path = require('path');
-const { getHash, getBlockHash } = require('block-pow');
+const { 
+    getHash, 
+    getBlockHash 
+} = require('block-pow');
 
 const NUMBER_OF_TRANSACTIONS_IN_ONE_BLOCK = 7;
 let PREV_HASH = null;

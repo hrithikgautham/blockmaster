@@ -1,5 +1,3 @@
-"use strict"
-
 /**
  * 1) get transaction object from transaction hash.
  * 2) given a transaction hash, find which block it belongs.
