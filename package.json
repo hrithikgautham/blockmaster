@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node test.js",
     "start": "webpack-dev-server",
-    "build": "webpack"
+    "build": "webpack",
+    "select": "node ./main/blockchain/utils"
   },
   "keywords": [
     "blockchain",

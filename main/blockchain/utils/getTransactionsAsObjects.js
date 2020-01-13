@@ -1,8 +1,7 @@
 const path = require('path');
 const fsPromises = require('fs').promises;
-const heapify = require('../../utils/maxHeap');
 
-async function getOptimumTransactions() {
+async function getTransactionsAsObjects() {
     try {
         const memPath = path.join(__dirname, '..', '..', 'mempool');
         const files = await fsPromises.readdir(memPath);
@@ -14,7 +13,6 @@ async function getOptimumTransactions() {
             transactions[i] = JSON.parse(data);
             transactionToFile.set(transactions[i], filePath);
         }
-        await heapify(transactions, (a, b) => a.minerFee < b.minerFee);
         return [transactions, transactionToFile];
     }
     catch(err) {
@@ -22,4 +20,4 @@ async function getOptimumTransactions() {
     }
 }
 
-module.exports = getOptimumTransactions;
+module.exports = getTransactionsAsObjects;

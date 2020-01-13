@@ -5,7 +5,7 @@ function BlockHeader(
     prevHash,
     merkleRoot,
     numberOfTransactions,
-    nonce
+    difficulty,
 ) {
     return (
         {
@@ -13,7 +13,8 @@ function BlockHeader(
             prevHash,
             merkleRoot,
             numberOfTransactions,
-            nonce
+            difficulty,
+            timeStampAfterHashing: new Date().toLocaleString(),
         }
     );
 }
@@ -23,6 +24,7 @@ function Block(
     prevHash,
     merkleRoot,
     numberOfTransactions,
+    difficulty,
     nonce,
     content
 ) {
@@ -33,14 +35,12 @@ function Block(
                 prevHash,
                 merkleRoot,
                 numberOfTransactions,
-                nonce      
+                difficulty,
+                nonce,
             ),
-            content,
+            content
         }
     );
 }
 
-module.exports = {
-    BlockHeader,
-    Block,
-};
+module.exports = Block;

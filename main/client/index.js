@@ -30,7 +30,7 @@ async function send(sender, receiver, totalAmount, amount, fee) {
     try {
         const remainingAmountOfSender = totalAmount - amount - (2*fee); // HERE, changes needed (tracking transactions)
         if(remainingAmountOfSender < 0)
-            throw new Error('cannot send!');
+            return;
         const transaction = Transaction(sender, receiver, amount, fee);
         const ownTransaction = Transaction(sender, sender, remainingAmountOfSender, fee);
         await storeTransaction(transaction);
