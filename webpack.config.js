@@ -1,6 +1,13 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = {
+const forntEndConfig = {
+    node: { fs: 'empty' },
+    target: "web",
+    output: {
+        path: path.resolve(__dirname, "dist"),
+        filename: "frontend-bundle.js"
+    },
     module: {
         rules: [
             {
@@ -32,3 +39,15 @@ module.exports = {
         })
     ]
 };
+
+const backendConfig = {
+    target: "node",
+    entry: "./src/main/index.js",
+    output: {
+        path: path.resolve(__dirname, "dist"),
+        filename: "backend-bundle.js"
+    },
+    mode: "development"  
+};
+
+module.exports = [backendConfig, forntEndConfig];

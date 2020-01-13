@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./style.scss";
 import { Input, Form } from '../utils';
+import { send } from "../../main";
 
 export default function Transfer({
     sender,
@@ -13,7 +14,7 @@ export default function Transfer({
 
     function handleSubmit(e) {
         e.preventDefault();
-        send(sender, receiver, amount);
+        send(sender, receiver, 10, amount, 0.2);
     }
 
     function handleChange(e) {

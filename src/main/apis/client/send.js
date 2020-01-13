@@ -1,4 +1,4 @@
-const Transaction = require("../classes/Transaction");
+const Transaction = require("../../classes/Transaction");
 const path = require('path');
 const fsPromises = require('fs').promises;
 const { getHash } = require('block-pow');
@@ -34,6 +34,7 @@ async function send(sender, receiver, totalAmount, amount, fee) {
         const ownTransaction = Transaction(sender, sender, remainingAmountOfSender, fee);
         await storeTransaction(transaction);
         await storeTransaction(ownTransaction);
+        console.log("send got executed");
     }
     catch(err) {
         console.error(err);

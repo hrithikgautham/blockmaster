@@ -77,10 +77,4 @@ async function createBlock() {
     }
 }
 
-async function a(){
-    await createBlock();
-    await createBlock();
-    await createBlock();
-}
-
-a();
+module.exports = createBlock;
