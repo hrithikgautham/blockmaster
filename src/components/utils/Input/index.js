@@ -10,6 +10,7 @@ export default function Input(props) {
         placeholder,
         onChange,
         onClick,
+        onInput,
         style,
         className,
         id,
@@ -23,6 +24,7 @@ export default function Input(props) {
         placeholder={ placeholder }
         onClick={ onClick ? onClick : null }
         onChange={ onChange ? onChange : null }
+        onInput={onInput ? onInput: null }
         style={ style ? style : {} }
         className={ className ? className : null }
         id={ id ? id : null } />

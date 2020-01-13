@@ -16,10 +16,31 @@ form input[type="button"]:hover {
     cursor: pointer;
 }
 
+.btn {
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+    &:hover {
+        background-color: lighten($color: #000000, $amount: 0.3);
+    }
+}
+
 //  mixins
 @mixin flex-center-center {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-center-sa {
+    display: flex;
+    justify-content: center;
+    align-items: space-around;
+}
+
+@mixin flex-sa-center {
+    display: flex;
+    justify-content: space-around;
     align-items: center;
 }
 

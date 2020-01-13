@@ -1,1 +1,31 @@
 @import "../../styles/default";
+
+nav {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    h1 {
+        color: white;
+    }
+
+    ul {
+        width: 50%;
+        @include flex-sa-center;
+
+        li {
+            list-style-type: none;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            * {
+                text-decoration: none;
+                color: #999;
+            }
+        }
+    }
+
+}

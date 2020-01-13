@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import { Form, Input } from "../utils";
 import "./style.scss";
 
-export default function SignUp(props) {
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [repeatPassword, setRepeatPassword] = useState("");
+export default function SignUp({
+    firstName,
+    lastName,
+    email,
+    password,
+    repeatPassword,
+    setFirstName,
+    setLastName,
+    setEmail,
+    setPassword,
+    setRepeatPassword
+}) {
 
     function handleSubmit(e) {
         e.preventDefault();
