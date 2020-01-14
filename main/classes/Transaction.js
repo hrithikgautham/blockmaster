@@ -12,7 +12,7 @@ function Transaction(
             receiver,
             amount,
             minerFee,
-            timeStamp: new Date().toDateString()
+            timeStamp: new Date().getTime()
         }
     );
 }
