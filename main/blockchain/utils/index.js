@@ -29,7 +29,7 @@ async function createBlock() {
         const transactionsToBeMerkled = [];
         let i = 0;
         const bcPath = path.join(__dirname, "..");
-        await createFolderIfNotPresent(path.join(bcPath, "transactions"));
+        await createFolderIfNotPresent(path.join(bcPath), "transactions");
         while(i < NUMBER_OF_TRANSACTIONS_IN_ONE_BLOCK) {
             const transactionPath = transactionsMap.get(transactions.shift());
             const transactionHash = getTransactionHash(transactionPath);
@@ -47,9 +47,9 @@ async function createBlock() {
             nonce,
             content
          */
-        const merklePath =  path.join(bcPath, "merkle");
-        await createFolderIfNotPresent(merklePath);
-        const merkleRoot = await getMerkleRoot(merklePath, [...transactionsToBeMerkled]);
+        // const merklePath =  path.join(bcPath,);
+        await createFolderIfNotPresent(bcPath, "merkle");
+        const merkleRoot = await getMerkleRoot(path.join(bcPath, "merkle"), [...transactionsToBeMerkled]);
         const blockWithoutNonce = {
             merkleRoot,
             timeStampBeforehashing: new Date().getTime(),
@@ -71,7 +71,7 @@ async function createBlock() {
             nonce,
             transactionsToBeMerkled
         );
-        await createFolderIfNotPresent(path.join(bcPath, "blocks"));
+        await createFolderIfNotPresent(path.join(bcPath), "blocks");
         await fsPromises.writeFile(
             path.join(__dirname, "..", "blocks", newHash), 
             JSON.stringify(block)
