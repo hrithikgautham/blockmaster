@@ -34,7 +34,16 @@ async function createBlock() {
             const transactionPath = transactionsMap.get(transactions.shift());
             const transactionHash = getTransactionHash(transactionPath);
             await heapify(transactions, (a, b) => a < b);
-            await fsPromises.rename(transactionPath, path.join(__dirname, "..", "transactions", transactionHash));
+            await fsPromises
+                    .rename(
+                        transactionPath, 
+                        path.join(
+                            __dirname, 
+                            "..", 
+                            "transactions", 
+                            transactionHash
+                        )
+                    );
             transactionsToBeMerkled.push(transactionHash);
             i++;
         }
@@ -47,16 +56,19 @@ async function createBlock() {
             nonce,
             content
          */
-        // const merklePath =  path.join(bcPath,);
-        await createFolderIfNotPresent(bcPath, "merkle");
-        const merkleRoot = await getMerkleRoot(path.join(bcPath, "merkle"), [...transactionsToBeMerkled]);
+        const merkleRoot = await getMerkleRoot([...transactionsToBeMerkled]);
         const blockWithoutNonce = {
             merkleRoot,
             timeStampBeforehashing: new Date().getTime(),
             difficulty: 3,
             prevHash: PREV_HASH
         };
-        const blockHash = await getHash(JSON.stringify(blockWithoutNonce), "", "", 'sha256'); // blockHash
+        const blockHash = await getHash(
+                                    JSON.stringify(blockWithoutNonce),
+                                    "", 
+                                    "", 
+                                    'sha256'
+                                ); // blockHash
         const {
             newString,
             newHash,
@@ -77,8 +89,8 @@ async function createBlock() {
             JSON.stringify(block)
         );
         if(PREV_HASH === null)
-            await fsPromises.writeFile(path.join(__dirname, "..", "blocks", "genesisBlock"), newHash);
-        await fsPromises.writeFile(path.join(__dirname, "..", "blocks", "currentBlock"), newHash);
+            await fsPromises.writeFile(path.join(bcPath, "blocks", "genesisBlock"), newHash);
+        await fsPromises.writeFile(path.join(bcPath, "blocks", "currentBlock"), newHash);
         PREV_HASH = newHash;
     }
     catch(err) {

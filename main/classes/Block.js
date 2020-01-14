@@ -1,24 +1,5 @@
 "use strict"
 
-function BlockHeader(
-    blockHash,
-    prevHash,
-    merkleRoot,
-    numberOfTransactions,
-    difficulty,
-) {
-    return (
-        {
-            blockHash,
-            prevHash,
-            merkleRoot,
-            numberOfTransactions,
-            difficulty,
-            timeStampAfterHashing: new Date().toLocaleString(),
-        }
-    );
-}
-
 function Block(
     blockHash,
     prevHash,
@@ -30,14 +11,13 @@ function Block(
 ) {
     return (
         {
-            ...BlockHeader(
-                blockHash,
-                prevHash,
-                merkleRoot,
-                numberOfTransactions,
-                difficulty,
-                nonce,
-            ),
+            blockHash,
+            prevHash,
+            merkleRoot,
+            numberOfTransactions,
+            difficulty,
+            timeStampAfterHashing: new Date().toLocaleString(),
+            nonce,
             content
         }
     );
