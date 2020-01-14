@@ -3,5 +3,5 @@
  * 2) given a transaction hash, find which block it belongs.
  * 3) get all the transactions from a block
  * 4) get previousblockhash of current block
- * 5) 
+ * 5) given a transaction, find if it is part fo blockchain
  */

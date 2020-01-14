@@ -1,9 +1,10 @@
-const Transaction = require("../classes/Transaction");
+const Transaction = require("../../classes/Transaction");
 const path = require('path');
 const fsPromises = require('fs').promises;
 const { getHash } = require('block-pow');
+const createFolderIfNotPresent = require("../../utils/createFolderIfNotPresent");
 
-async function storeTransaction(transaction) {
+async function storeTransaction(transaction, memFolder) {
     // const hash = await getHash(tran);
     const data = JSON.stringify(transaction);
     try {
@@ -11,9 +12,7 @@ async function storeTransaction(transaction) {
         await fsPromises
                 .writeFile(
                     path.join(
-                        __dirname, 
-                        "..", 
-                        "..",
+                        memFolder,
                         "mempool", 
                         `${hash}` 
                     ),
@@ -32,8 +31,10 @@ async function send(sender, receiver, totalAmount, amount, fee) {
             return;
         const transaction = Transaction(sender, receiver, amount, fee);
         const ownTransaction = Transaction(sender, sender, remainingAmountOfSender, fee);
-        await storeTransaction(transaction);
-        await storeTransaction(ownTransaction);
+        const memFolder = path.join(__dirname, "..", "..");
+        await createFolderIfNotPresent(memFolder, "mempool");
+        await storeTransaction(transaction, memFolder);
+        await storeTransaction(ownTransaction, memFolder);
     }
     catch(err) {
         console.error(err);

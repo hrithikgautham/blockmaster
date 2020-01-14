@@ -5,6 +5,7 @@ const Block = require("../../classes/Block");
 const getTransactionHash = require("./getTransactionHash");
 const getMerkleRoot = require("./getMerkleRoot");
 const heapify = require("../../utils/maxHeap");
+const createFolderIfNotPresent = require("../../utils/createFolderIfNotPresent");
 const fsPromises = require("fs").promises;
 const path = require('path');
 const { 
@@ -27,6 +28,7 @@ async function createBlock() {
 
         const transactionsToBeMerkled = [];
         let i = 0;
+        await createFolderIfNotPresent(path.join(__dirname, ".."), "transactions");
         while(i < NUMBER_OF_TRANSACTIONS_IN_ONE_BLOCK) {
             const transactionPath = transactionsMap.get(transactions.shift());
             const transactionHash = getTransactionHash(transactionPath);
@@ -66,6 +68,7 @@ async function createBlock() {
             nonce,
             transactionsToBeMerkled
         );
+        await createFolderIfNotPresent(path.join(__dirname, ".."), "blocks");
         await fsPromises.writeFile(
             path.join(__dirname, "..", "blocks", newHash), 
             JSON.stringify(block)
@@ -77,10 +80,4 @@ async function createBlock() {
     }
 }
 
-async function a(){
-    await createBlock();
-    await createBlock();
-    await createBlock();
-}
-
-a();
+module.exports = createBlock;
